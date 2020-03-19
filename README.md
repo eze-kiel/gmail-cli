@@ -19,6 +19,8 @@ Flags :
 ```
 
 Note that your password and username can be declared in environnement variables, since I'm using [namsral's flag package](github.com/namsral/flag).
+
+You also need to enable the access to your account by less secure apps [here](https://myaccount.google.com/lesssecureapps).
 ## Author
 
 Written by ezekiel.
