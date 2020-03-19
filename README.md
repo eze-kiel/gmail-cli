@@ -10,7 +10,7 @@ Typical usage :
 `./main -t recipient@example.com -f yourname@gmail.com -s subject -m 'send thanks to a CLI!' -p yourGMailpassword `
 
 Flags :
-```Go
+```
 -f      Sender of the mail (also your username used to connect to your GMail   account)
 -m      The content of your message
 -p      The password of your GMail account
