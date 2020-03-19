@@ -25,7 +25,7 @@ func main() {
 
 	// This statement check if the principal flags are used
 	// If not, the program exit
-	if recipient == "" || from == "" || pass == "" {
+	if recipient == "" || from == "" {
 		fmt.Println("You need to provide correct recipient, sender email addresses and a correct password")
 		os.Exit(0)
 	}
@@ -37,7 +37,6 @@ func main() {
 
 	// SMTP authentification to the GMail server
 	auth := smtp.PlainAuth("", from, pass, "smtp.gmail.com")
-	fmt.Printf("plain auth : success\n")
 
 	// Port 587 is used because it uses TLS
 	err := smtp.SendMail("smtp.gmail.com:587", auth, from, []string{recipient}, msg)
