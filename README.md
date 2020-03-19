@@ -7,7 +7,7 @@ Send mails with your GMail account with a simple command-line interface
 ## Description
 Typical usage :
 
-`./main -t recipient@example.com -f yourname@gmail.com -s subject -m 'send thanks to a CLI!' -p yourGMailpassword `
+`./gmail-cli -t recipient@example.com -f yourname@gmail.com -s subject -m 'sent thanks to a CLI!' -p yourGMailpassword `
 
 Flags :
 ```
