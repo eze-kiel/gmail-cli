@@ -1,5 +1,3 @@
-// https://myaccount.google.com/lesssecureapps
-
 package main
 
 import (
@@ -14,6 +12,7 @@ import (
 func main() {
 	var recipient, subject, message, from, pass string
 
+	// Declaration of flags
 	flag.StringVar(&from, "f", "", "sender of the mail")
 	flag.StringVar(&message, "m", "no message", "content of the mail")
 	flag.StringVar(&pass, "p", "", "password to connect to your email account")
@@ -23,22 +22,24 @@ func main() {
 	flag.Parse()
 
 	fmt.Println("flags parsed")
+
+	// This statement check if the principal flags are used
+	// If not, the program exit
 	if recipient == "" || from == "" || pass == "" {
 		fmt.Println("You need to provide correct recipient, sender email addresses and a correct password")
 		os.Exit(0)
 	}
 
-	var (
-		//recipients = []string{recipient}
-		msg = []byte("From: " + from + "\n" +
-			"To: " + recipient + "\n" +
-			"Subject: " + subject + "\n\n" +
-			message)
-	)
+	msg := []byte("From: " + from + "\n" +
+		"To: " + recipient + "\n" +
+		"Subject: " + subject + "\n\n" +
+		message)
 
+	// SMTP authentification to the GMail server
 	auth := smtp.PlainAuth("", from, pass, "smtp.gmail.com")
 	fmt.Printf("plain auth : success\n")
 
+	// Port 587 is used because it uses TLS
 	err := smtp.SendMail("smtp.gmail.com:587", auth, from, []string{recipient}, msg)
 	if err != nil {
 		log.Fatal(err)
