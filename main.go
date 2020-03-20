@@ -19,16 +19,19 @@ func main() {
 	flag.StringVar(&subject, "s", "no subject", "subject of the mail")
 	flag.StringVar(&recipient, "t", "", "recipient email address")
 
+	flag.String(flag.DefaultConfigFlagname, "", "path to config file")
+
 	flag.Parse()
 
 	fmt.Println("flags parsed")
 
 	// This statement check if the principal flags are used
 	// If not, the program exit
-	if recipient == "" || from == "" {
-		fmt.Println("You need to provide correct recipient, sender email addresses and a correct password")
+	if recipient == "" {
+		fmt.Println("You need to provide correct recipient")
 		os.Exit(0)
 	}
+	fmt.Printf("from:%s pass:%s\n", from, pass)
 
 	msg := []byte("From: " + from + "\n" +
 		"To: " + recipient + "\n" +
